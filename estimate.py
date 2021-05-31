@@ -1,6 +1,28 @@
 import math
 import unittest
 
+def wallis(t):
+    prod = 1
+    for i in range(1,t+1):
+        prod=prod*(4*(i**2))/((4*(i**2)) - 1)
+        
+    return(2*prod)
+    
+from random import *
+def monte_carlo(t):
+    p_circle = 0
+    p_square = 0
+    for i in range(t):
+        x = random()
+        y = random()
+        if (x**2 + y**2)<=1:
+            p_circle+=1
+        p_square+=1
+    f=4*p_circle/p_square
+    
+    return(f)
+    
+    
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
         for i in range(0, 5):
@@ -30,3 +52,6 @@ class TestMC(unittest.TestCase):
     
 if __name__ == "__main__":
     unittest.main()
+    
+
+
